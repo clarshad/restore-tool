@@ -57,7 +57,7 @@ func main() {
 func GetKubeCluster(client *dynamic.DynamicClient) error {
 
 	kcRes := schema.GroupVersionResource{Group: "infrastructure.cluster.x-k8s.io", Version: "v1alpha2", Resource: "kubeclusters"}
-	list, err := client.Resource(kcRes).Namespace("caas-default").List(context.TODO(), metav1.ListOptions{})
+	list, err := client.Resource(kcRes).Namespace("default").List(context.TODO(), metav1.ListOptions{})
 	if err != nil {
 		fmt.Printf("failed to list kubecluster resource, error: %v\n", err)
 		return err
