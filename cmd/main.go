@@ -69,6 +69,11 @@ func main() {
 	// Build kubemachine resource
 	_ = caas.CreateKubeMachine(dbCluster, caasDefaultNamespace, mgmtNetworks)
 
+	// Buid kubemachinetemplate resource
+	_ = caas.CreateKubeMachineTemplate(dbCluster, caasDefaultNamespace)
+
+	_ = caas.CreateKubeBootstrapConfig(dbCluster, caasDefaultNamespace)
+
 }
 
 func GetKubeCluster(client *dynamic.DynamicClient) error {

@@ -73,7 +73,7 @@ func CreateKubeMachine(cluster mcaasapi.Cluster, namespace string, dmn map[strin
 					Size:                msd.Size,
 					StorageInstanceType: msd.StorageInstanceType,
 					Networks:            machine_networks,
-					Roles:               convertToStringSlice(msd.MachineRoles),
+					Roles:               ConvertToStringSlice(msd.MachineRoles),
 				},
 			}
 
@@ -92,7 +92,7 @@ func contains(s []mcaasapi.MachineRolesType, str string) bool {
 	return false
 }
 
-func convertToStringSlice(s []mcaasapi.MachineRolesType) []string {
+func ConvertToStringSlice(s []mcaasapi.MachineRolesType) []string {
 	list := []string{}
 	for _, v := range s {
 		list = append(list, string(v))
