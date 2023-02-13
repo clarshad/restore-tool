@@ -72,7 +72,11 @@ func main() {
 	// Buid kubemachinetemplate resource
 	_ = caas.CreateKubeMachineTemplate(dbCluster, caasDefaultNamespace)
 
+	// Buid kubemachinetemplate resource
 	_ = caas.CreateKubeBootstrapConfig(dbCluster, caasDefaultNamespace)
+
+	// Build cluster resource
+	_ = caas.CreateCluster(dbCluster, caasDefaultNamespace)
 
 }
 
