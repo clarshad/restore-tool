@@ -1,9 +1,6 @@
 package caas
 
 import (
-	"strconv"
-	"strings"
-
 	"github.com/HewlettPackard/hpegl-containers-go-sdk/pkg/mcaasapi"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
@@ -57,11 +54,4 @@ func CreateKubeCluster(cluster mcaasapi.Cluster, namespace string) KubeCluster {
 			},
 		},
 	}
-}
-
-// SplitUrl splits url and returns protocal, endpoint and port number
-func SplitUrl(url string) (string, string, int) {
-	s := strings.Split(url, ":")
-	p, _ := strconv.Atoi(s[2])
-	return s[0], strings.Trim(s[1], "/"), p
 }

@@ -1,14 +1,12 @@
 package caas
 
 import (
-	"strings"
-
 	"github.com/HewlettPackard/hpegl-containers-go-sdk/pkg/mcaasapi"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 const (
-	kubeMachineTemplateKind       = "KubeMachine"
+	kubeMachineTemplateKind       = "KubeMachineTemplate"
 	kubeMachineTemplateApiVersion = "infrastructure.cluster.x-k8s.io/v1alpha2"
 )
 
@@ -62,10 +60,4 @@ func CreateKubeMachineTemplate(cluster mcaasapi.Cluster, namespace string) []Kub
 	}
 
 	return kmtlist
-}
-
-func getKmtName(n string) string {
-	s := strings.Split(n, "-")
-	s = s[:len(s)-1]
-	return strings.Join(s, "-")
 }

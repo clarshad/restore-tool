@@ -82,20 +82,3 @@ func CreateKubeMachine(cluster mcaasapi.Cluster, namespace string, dmn map[strin
 	}
 	return kmlist
 }
-
-func contains(s []mcaasapi.MachineRolesType, str string) bool {
-	for _, v := range s {
-		if string(v) == str {
-			return true
-		}
-	}
-	return false
-}
-
-func ConvertToStringSlice(s []mcaasapi.MachineRolesType) []string {
-	list := []string{}
-	for _, v := range s {
-		list = append(list, string(v))
-	}
-	return list
-}
