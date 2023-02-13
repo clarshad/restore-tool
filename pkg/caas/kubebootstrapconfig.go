@@ -5,10 +5,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-const (
-	kubeBootstrapConfigKind       = "KubeBootstrapConfig"
-	kubeBootstrapConfigApiVersion = "infrastructure.cluster.x-k8s.io/v1alpha2"
-)
+const kubeBootstrapConfigKind = "KubeBootstrapConfig"
 
 // KubeBootstrapConfig is the Schema for the kubebootstrapconfigs
 type KubeBootstrapConfig struct {
@@ -38,7 +35,7 @@ func CreateKubeBootstrapConfig(cluster mcaasapi.Cluster, namespace string) []Kub
 			kbc := KubeBootstrapConfig{
 				TypeMeta: metav1.TypeMeta{
 					Kind:       kubeBootstrapConfigKind,
-					APIVersion: kubeBootstrapConfigApiVersion,
+					APIVersion: glCaasApiVersion,
 				},
 				ObjectMeta: metav1.ObjectMeta{
 					Name:      cluster.Name + "-" + m.Name,

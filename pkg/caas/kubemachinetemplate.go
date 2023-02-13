@@ -5,10 +5,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-const (
-	kubeMachineTemplateKind       = "KubeMachineTemplate"
-	kubeMachineTemplateApiVersion = "infrastructure.cluster.x-k8s.io/v1alpha2"
-)
+const kubeMachineTemplateKind = "KubeMachineTemplate"
 
 // KubeMachineTemplate is the Schema for the kubemachinetemplates
 type KubeMachineTemplate struct {
@@ -34,7 +31,7 @@ func CreateKubeMachineTemplate(cluster mcaasapi.Cluster, namespace string) []Kub
 		kmt := KubeMachineTemplate{
 			TypeMeta: metav1.TypeMeta{
 				Kind:       kubeMachineTemplateKind,
-				APIVersion: kubeMachineTemplateApiVersion,
+				APIVersion: glCaasApiVersion,
 			},
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      name,

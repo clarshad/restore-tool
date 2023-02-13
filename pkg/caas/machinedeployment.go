@@ -8,9 +8,8 @@ import (
 )
 
 const (
-	machineDeploymentKind       = "MachineDeployment"
-	machineDeploymentApiVersion = "cluster.x-k8s.io/v1beta1"
-	excludeNodeDraining         = "true"
+	machineDeploymentKind = "MachineDeployment"
+	excludeNodeDraining   = "true"
 )
 
 func createMachineDeployment(cluster mcaasapi.Cluster, namespace string) []clusterv1beta1.MachineDeployment {
@@ -34,7 +33,7 @@ func createMachineDeployment(cluster mcaasapi.Cluster, namespace string) []clust
 		md := clusterv1beta1.MachineDeployment{
 			TypeMeta: v1.TypeMeta{
 				Kind:       machineDeploymentKind,
-				APIVersion: machineDeploymentApiVersion,
+				APIVersion: capiApiVersion,
 			},
 			ObjectMeta: v1.ObjectMeta{
 				Name:      cluster.Name + "-" + msd.Name,
@@ -56,7 +55,7 @@ func createMachineDeployment(cluster mcaasapi.Cluster, namespace string) []clust
 							DataSecretName: &bootstrapDataSecretName,
 						},
 						InfrastructureRef: corev1.ObjectReference{
-							APIVersion: kubeMachineTemplateApiVersion,
+							APIVersion: glCaasApiVersion,
 							Kind:       kubeMachineTemplateKind,
 							Name:       getKmtName(msd.Machines[0].Name),
 						},

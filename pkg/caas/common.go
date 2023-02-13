@@ -7,6 +7,11 @@ import (
 	"github.com/HewlettPackard/hpegl-containers-go-sdk/pkg/mcaasapi"
 )
 
+const (
+	capiApiVersion   = "cluster.x-k8s.io/v1beta1"
+	glCaasApiVersion = "infrastructure.cluster.x-k8s.io/v1alpha2"
+)
+
 func getKmtName(n string) string {
 	s := strings.Split(n, "-")
 	s = s[:len(s)-1]

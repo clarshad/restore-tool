@@ -6,10 +6,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-const (
-	clusterKind       = "Cluster"
-	clusterApiVersion = "cluster.x-k8s.io/v1beta1"
-)
+const clusterKind = "Cluster"
 
 type Cluster struct {
 	metav1.TypeMeta   `json:",inline"`
@@ -29,13 +26,13 @@ func CreateCluster(cluster mcaasapi.Cluster, namespace string) Cluster {
 		Kind:       kubeClusterKind,
 		Namespace:  namespace,
 		Name:       cluster.Name,
-		APIVersion: kubeClusterApiVersion,
+		APIVersion: glCaasApiVersion,
 	}
 
 	return Cluster{
 		TypeMeta: metav1.TypeMeta{
 			Kind:       clusterKind,
-			APIVersion: clusterApiVersion,
+			APIVersion: capiApiVersion,
 		},
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      cluster.Name,
